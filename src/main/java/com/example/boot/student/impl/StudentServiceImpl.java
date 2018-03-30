@@ -1,21 +1,22 @@
 package com.example.boot.student.impl;
 
 import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
 
-import org.dozer.DozerBeanMapper;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import com.example.boot.dto.StudentDTO;
 import com.example.boot.student.Student;
 import com.example.boot.student.StudentRepository;
 import com.example.boot.student.StudentService;
+
+import lombok.extern.slf4j.Slf4j;
+@Slf4j
+@Transactional
 @Service("studentService")
 public class StudentServiceImpl  implements StudentService{
-@Autowired
-private DozerBeanMapper mapper;
 @Autowired
 private StudentRepository studentRepository;
 
