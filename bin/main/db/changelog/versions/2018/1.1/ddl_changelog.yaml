@@ -1,0 +1,97 @@
+databaseChangeLog:
+
+  - changeSet:
+      id: 1
+      author: saggarwal
+      comment: CREATE | constant
+      preConditions: 
+        - onFail: MARK_RAN
+        - not:
+            - tableExists:
+                tableName: es_constant
+      changes:
+        - createTable:
+            tableName: es_constant
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: es_constant_pk_id
+                    nullable: false
+              - column:
+                  name: code
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+                    unique: true
+              - column:
+                  name: value
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: createddate
+                  type: timestamp with time zone
+                  defaultValueComputed: now()
+                  constraints:
+                    nullable: false  
+              - column:
+                  name: lastupdateddate
+                  type: timestamp with time zone 
+                  
+                
+  - changeSet:
+      id: 18.1.2
+      author: saggarwal
+      comment: CREATE | es_user
+      preConditions: 
+        - onFail: MARK_RAN
+        - not:
+            - tableExists:
+                tableName: myuser
+      changes:
+        - createTable:
+            tableName: myuser
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: my_user_pk_id
+                    nullable: false
+              - column:
+                  name: username
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+                    unique: false
+              - column:
+                  name: password
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: active
+                  type: boolean
+                  constraints:
+                    nullable: false
+              - column:
+                  name: role
+                  type: varchar(20)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: createddate
+                  type: timestamp with time zone
+                  defaultValueComputed: now()
+                  constraints:
+                    nullable: false  
+              - column:
+                  name: lastupdateddate
+                  type: timestamp with time zone 
+            

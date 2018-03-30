@@ -1,0 +1,26 @@
+databaseChangeLog:
+  - changeSet:
+      id: 8.1.1
+      author: saggarwal
+      comment: INSERT | user
+      preConditions: 
+        - onFail: MARK_RAN
+        - sqlCheck: 
+            expectedResult: 0
+            sql: select count(*) from myuser where username= 'api_user';
+      changes:
+        - insert: 
+            tableName: myuser
+            columns:
+              - column:
+                  name: username
+                  value: api_user
+              - column:
+                  name: password
+                  value: $2a$10$zUqL7aKYucje9TU1xqWXkeWqHZUrZClW6H8RvMiWsd2I6p8UJe0Te
+              - column:
+                  name: role
+                  value: ROLE_API
+              - column:
+                  name: active
+                  value: true

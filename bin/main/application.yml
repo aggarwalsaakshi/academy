@@ -1,0 +1,26 @@
+# common application settings
+server:
+  port: 8085
+
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        current_session_context_class: org.springframework.orm.hibernate5.SpringSessionContext
+        dialect: org.hibernate.dialect.PostgreSQL9Dialect
+
+  mvc:
+    throw-exception-if-no-handler-found: true
+  resources:
+    add-mappings: false
+  datasource:
+    url: jdbc:postgresql://localhost:5433/academy
+    username: postgres
+    password: saakshi
+    hikari:
+      maximum-pool-size: 20
+
+
+  
