@@ -18,7 +18,7 @@ import com.example.boot.rest.helper.AcademyHepler;
 import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @RestController
-@RequestMapping(value = "/api")
+@RequestMapping(value = "/rest/api")
 public class AcademyController {
 
 	 @Autowired
@@ -29,16 +29,16 @@ public class AcademyController {
 	 return academyHepler.getStudentDetail(id);
 	
 	 }
-	 @RequestMapping(value = "/student",  produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.GET)
+	 @RequestMapping(value = "/students",  produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.GET)
 	 public List<StudentDTO> getAllStudentsDetails() {
 	 return academyHepler.getAllStudentsDetail();
 	
 	 }
-	/* @RequestMapping(value = "/student/{id}",  produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.PUT)
-	 public List<Student> updateStudentDetail(@PathVariable("id") Long id) {
-	 return academyHepler.getStudentDetail(id);
+	 @RequestMapping(value = "/student/{id}",  produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.PUT)
+	 public String updateStudentDetail(@PathVariable("id") Long id,@RequestBody StudentDTO studentDTO) {
+	 return academyHepler.getStudentDetail(id,studentDTO);
 	
-	 }*/
+	 }
 	 @RequestMapping(value = "/health",  method = RequestMethod.GET)
 	 public String healthCheck() {
 	 return "Welcome Server is UP";
