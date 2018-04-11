@@ -3,9 +3,13 @@
 * HOW to create a SpringBoot project
 1) Open IDE i.e. STS 
 2)Go to Menu  File -> new-> SpringBoot-> Spring Starter Project 
-build type gradle ->ok
+ Give name of the project, build type gradle ->ok
 
-
+* How to change local IP to domain name so a host can access a VM?
+1) Put an entry in Windows 7 hosts file.
+c:\\Windows\System32\Drivers\etc\hosts
+	127.0.0.1       academy.com
+	
 * Configure liquibase
  1) Go to build.gradle
  2) Add dependency
@@ -42,6 +46,7 @@ build type gradle ->ok
 
 
 * REST webservice
+
  1) Go to build.gradle
  2) Add dependency
  		compile('org.springframework.boot:spring-boot-starter-web-services')
@@ -50,20 +55,22 @@ build type gradle ->ok
 @RequestMapping(value = "/api/rest")
 
 * Add lombok
+
  1) Go to build.gradle
  2) Add dependency
  compile('org.projectlombok:lombok')
  refresh the dependency
- Go to gradle lombok jat 
+ 3) Go to lombok jar right click and click on Run As-> Java application (give path on you IDE) and click on install/update it.
+ 
  3) Now we can use annotation
  like
 @AllArgsConstructor
 @Getter
 @Setter
-@ 
 	  
 * Add spring security
-  1) Go to build.gradle
+
+ 1) Go to build.gradle
  2) Add dependency
  	compile('org.springframework.boot:spring-boot-starter-security')
  3) Add changeset for user detail 
@@ -73,15 +80,20 @@ build type gradle ->ok
  5) Create service class and extend it with UserDetailsService	and override loadUserByUsername method as in example
  6) create any UserDetails class and extend it with UserDetails and override its methods as in example
  
- Sample request
- 
-* Insert record
-http://localhost:8085/rest/api/student
+
+
+* Sample requests
+ username :api_user
+ Password: Password1
+* Insert a record
+http://academy.com:8085/rest/api/student
+method: POST
+Payload:
+
 {
   "name": "nicky",
   "contactNo": 78966778,
   "isMember": true,
-  "joiningDate": null,
   "courses": [{
     "coursename": "PHP",
     "fee": 500,
@@ -90,8 +102,35 @@ http://localhost:8085/rest/api/student
    ]
 }
 
-* Fetch record by ID
-http://localhost:8085/rest/api/student/1
+* Fetch record by studentid
+http://academy.com:8085/rest/api/student/1
+method: GET
 
 * Fetch All records 
-http://localhost:8085/rest/api/students
+http://academy.com:8085/rest/api/students
+method: GET
+
+* Delete record by studentid 
+http://academy.com:8085/rest/api/student/1
+method: DELETE
+
+* update record by studentid 
+http://academy.com:8085/rest/api/student/1
+method: PUT
+Payload:
+
+{
+  "name": "nicky",
+  "contactNo": 78966778,
+  "isMember": true,
+  "courses": [{
+    "coursename": "PHP",
+    "fee": 500,
+    "coursecode": "PHP"
+  }
+   ]
+}
+
+
+Important link
+https://stackoverflow.com/questions/8716259/what-does-the-apr-based-apache-tomcat-native-library-was-not-found-mean

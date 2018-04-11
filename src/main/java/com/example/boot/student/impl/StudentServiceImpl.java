@@ -9,8 +9,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.example.boot.student.Student;
-import com.example.boot.student.StudentRepository;
+
 import com.example.boot.student.StudentService;
+import com.example.boot.student.dao.StudentRepository;
 
 import lombok.extern.slf4j.Slf4j;
 @Slf4j
